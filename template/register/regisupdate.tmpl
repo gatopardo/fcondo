@@ -1,0 +1,122 @@
+{{define "title"}}Actualizar Cuenta{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}{{end}}
+
+{{define "content"}}
+
+  <div class="fcontent">
+     <h3 class="mcenter">{{template "title" .}}</h3>
+      
+      <form enctype="multipart/form-data" action="/user/update/{{.User.Id}}" method="post">
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="cuenta">Cuenta </label> </div>
+              <div class="fbox">
+                <input type="text" id="cuenta" name="cuenta" size="16" maxlength="32" value="{{.User.Cuenta}}" placeholder="Cuenta" readonly autofocus />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="nivel" >Nivel </label> </div>
+              <div class="fbox">
+                <input type="range" id="nivel" name="nivel" size="2" maxlength="2"  min="0" max="5" value="{{.User.Nivel}}" />
+             </div>
+           </div>
+
+	<div class="fwrapper fcols2">
+           <div class="fbox"> <label for="aptId" ><span>Apto</span></label> </div>
+           <div class="fbox">
+               <select name="aptId"> 
+                 {{range $key, $value := .LisApts}}
+                      <option value="{{ $value.Id }}" 
+                         {{ if eq $value.Id $.Person.ApartaId}} selected 
+                         {{end}}
+                        >{{ $value.Codigo }}</option>
+                  {{end}}
+               </select>
+           </div>
+	</div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="fname">Nombre </label> </div>
+              <div class="fbox">
+                <input type="text" id="fname" name="fname" size="48" maxlength="64" value="{{.Person.Fname}}"   />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="lname">Apellido </label> </div>
+              <div class="fbox">
+                <input type="text" id="lname" name="lname" size="48" maxlength="64" value="{{.Person.Lname}}"   />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="address">Direccion </label> </div>
+              <div class="fbox">
+                <input type="text" id="address" name="address" size="48" maxlength="64" placeholder="Direccion" />
+              </div>
+           </div>
+
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="email" >Email </label> </div>
+              <div class="fbox">
+                <input type="email" id="email" name="email" size="32" maxlength="48" value="{{.Person.Email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="tele" >Tele </label> </div>
+              <div class="fbox">
+                <input type="tel" id="tele" name="tele" size="12" maxlength="24" value="{{.Person.Tele}}" placeholder="123-456-7890"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="mobil" >Mobil </label> </div>
+              <div class="fbox">
+                <input type="tel" id="mobil" name="mobil" size="12" maxlength="24" value="{{.Person.Mobil}}"  placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  />
+             </div>
+           </div>
+
+            <div class="fwrapper fcols2 ">
+               <div class="fbox"> 
+                   <input type="file" id="photo" name="photo"  accept="image/*" value ="{{.Person.Photo}}" />
+               </div>
+               <div class="fbox">
+                   <img alt="iphoto" src="{{.Person.Photo}}" height="60" />
+               </div>
+            </div>
+<!--
+             <button class="butfile" onclick="document.getElementById('photo').click()">Escoger</button>
+                   <input type="file" id="photo" name="photo"  accept="image/*" value ="{{.Person.Photo}}" style="display:none;" />
+
+-->
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="tipo">Tipo </label> </div>
+              <div class="fbox">
+               <select id="tipo" name="tipo"> 
+                 {{range $key, $value := .LisTips}}
+                    {{ if eq $value.Code $.Person.Tipo}}
+                      <option value="{{ $value.Code }}" selected>{{ $value.Stip }}</option>
+                    {{else}}
+                      <option value="{{ $value.Code }}" >{{ $value.Stip }}</option>
+                    {{end}}
+                  {{end}}
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <input type="hidden" name="token" value="{{.token}}"/> </div>
+              <div class="fbox">
+                 <span> 
+                     <input type="submit" name="action" formenctype="multipart/form-data"  value="Actualizar" />
+                     <input type="submit" name="action" value="Cancelar" />
+                 </span> 
+             </div>
+           </div>
+	</form>
+	
+</div>
+
+{{end}}

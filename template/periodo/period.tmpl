@@ -1,0 +1,50 @@
+{{define "title"}}Crear Periodo{{end}}
+{{define "head"}} {{end}}
+{{define "content"}}
+
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>  
+       <form method="post">
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+               <label for="inicio">Inicio</label>
+            </div>
+            <div class="fbox">
+               <input type="date" id="inicio" name="inicio"  size="10" placeholder="YYY/MM/DD"  required pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"  autofocus />
+            </div>
+       </div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+                <label for="final">final</label>
+            </div>
+            <div class="fbox">
+                <input type="date" id="final" name="final" size="10" maxlength="10" placeholder="YYY/MM/DD"  required pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" />
+            </div>
+       </div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+		<input type="hidden" name="token" value="{{.token}}">
+            </div>
+            <div class="fbox">
+                 <span>
+		<input type="submit" name="action"  value="Crear" />
+		<input type="submit" name="action"  value="Cancelar" />
+                 </span>
+            </div>
+       </div>
+       </form>
+  {{  range  .LisPeriods}}
+         <div class="lwrapper fcols3">
+           <div class="box"> {{ .Inicio | DATEFORMAT }} </div>
+           <div class="box"> {{ .Final  | DATEFORMAT }} </div>
+         </div>
+   {{end}} 
+
+	
+	{{template "footer" .}}
+</div>
+
+{{end}}
+{{define "foot"}}<h5>Apto</h5>{{end}}

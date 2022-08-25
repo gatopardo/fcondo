@@ -1,0 +1,97 @@
+{{define "title"}}Mi Condo{{end}}
+{{define "head"}}{{end}}
+{{define "content"}}
+   <div class="page-header">
+        <h1>{{template "title" .}}</h1>
+    </div>
+<!--
+
+ <div class="container swrapper">
+-->
+    <div> 
+	{{template "carrousel" .}}
+<!---
+	<p> Inicio. Pulse {{LINK "register" "aqui"}} para registrar.</p>
+-->
+    </div> 
+    <div> 
+    <p>
+       Aplicacion de administracion de condominio </br>
+       Con la cuenta y clave que se te suministra 
+       Puedes pasar a examinar estado y actividades
+    </p>
+    </div> 
+
+    <div> 
+         Si no esta registrado, pongase en contacto con la administracion
+    </div> 
+	{{template "footer" .}}
+
+<!---
+</div>
+-->
+
+{{end}}
+
+{{define "carrousel"}}
+
+     <div class="slideshow-container" >
+
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 4</div>
+        <img src="/static/favicons/jpeg/imp_2_izq.jpg" alt="izq" style=" width:50%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 4</div>
+        <img  src="/static/favicons/jpeg/imp_2_cent.jpg" alt="center" style="width:50%"> 
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 4</div>
+        <img  src="/static/favicons/jpeg/imp_2_der.jpg" alt="right"  style="width:50%"> 
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">4 / 4</div>
+        <img  src="/static/favicons/jpeg/imp_2_caset.jpg" alt="front"  style="width:50%"> 
+      </div>
+
+    </div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>   
+
+   <script>
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
+ 
+     </script>
+
+
+  
+{{end}}
+
+{{define "foot"}}<h5>Bienvenidos</h5>{{end}}
+
+<!--
+
+-->

@@ -1,0 +1,813 @@
+/* Global Styles */
+body {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
+  background-color: #80A080;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/*  */
+.page-header {
+	border-bottom: 0;
+	margin-top: 0;
+        line-height: 70%;
+   <!--     display: inline-block;  -->
+        display: block;
+
+ }
+
+
+.container {
+  width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#flash-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  margin: 0;
+}
+
+.alert-box-fixed {
+  margin: 0 15px 15px 0;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/*
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+*/
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+  /* Remove the navbar's default rounded borders
+    and increase the bottom margin 
+  */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #D0D0D0;
+      padding: 25px;
+      height: 25px;
+    }
+
+.table-striped>tr:nth-child(odd){
+   background-color: #4CAF50  /* red */ ; 
+}
+
+  tr {
+     line-height: 20px;
+     min-height: 15px;
+     height: 20px;
+  }
+   
+    .dropdown-submenu {
+	    position: relative;
+	}
+
+     .dropdown-submenu > .dropdown-menu {
+  	    top: 0;
+	    left: 100%;
+	    margin-top: -6px;
+	    margin-left: 0;
+	    border-radius: 0.25rem;
+	}
+
+	.dropdown-submenu:hover > .dropdown-menu {
+	    display: block;
+	}
+
+	.dropdown-submenu > a::after {
+		border-bottom: 0.3em solid transparent;
+		border-left-color: inherit;
+		border-left-style: solid;
+		border-left-width: 0.3em;
+		border-top: 0.3em solid transparent;
+		content: " ";
+		display: block;
+		float: right;
+		height: 0;
+		margin-right: -0.6em;
+		margin-top: -0.95em;
+		width: 0;
+	}
+
+	.dropdown-submenu.pull-left {
+	    float: none;
+	}
+
+	.dropdown-submenu.pull-left > .dropdown-menu {
+	    left: -75%;
+	}
+
+	.dropdown-menu .divider {
+            background-color: #e5e5e5;
+	    height: 1px;
+	    margin: 9px 0;
+	    overflow: hidden;
+	}
+
+    a {
+        text-decoration: none;
+        color:#202020;
+        line-height: 10px;
+        min-height: 10px;
+    }
+
+
+ form {
+  margin: 0 auto;
+  width: 99%;
+  padding: 1em;
+  border: 1px solid #CCCC;
+  border-radius: 1em;
+  background-color: #90B090;
+}
+
+
+.row {
+  display: flex;
+}
+
+.row > div {
+  flex: 1;
+  border: 1px solid black;
+}
+
+/*   */
+.center {
+    text-align: center;
+    margin: 1px;
+    padding: 1px;
+    border: 1px solid green;
+}
+.mcenter {
+    text-align: center;
+    margin: 1px;
+    padding: 1px;
+    border: 1px solid;
+}
+/* Ultimate Drop Down v1.0
+  Project URL: http://www.dynamicdrive.com/style/csslibrary/item/ultimate_drop_down/
+*/
+
+.udropdown {
+    font: bold 16px 'Bitter', sans-serif;
+    background: #BC1818;
+<!    position: relative;  -->
+    width: 100%;
+}
+
+/* Top Level Menu */
+.udropdown ul {
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+}
+
+/* Top level list items */
+.udropdown ul li {
+    position: relative;
+    display: inline;
+    float: left;
+}
+
+/* Top level menu items link style */
+ .udropdown ul li a, .udropdown ul li span {
+     display: block;
+     position: relative;
+     /* background of menu items (default state) */
+     background: #BC1818;
+     color: white;
+     padding: 14px 10px;
+     border-right: 1px solid red;
+     color: #2d2b2b;
+     text-decoration: none;
+  }
+
+  .udropdown ul li a:link, .udropdown ul li a:visited {
+      color: white;
+}
+
+/* Top level menu items link style on hover and when active */
+.udropdown ul li:hover > a {
+    background: #a83a34;
+}
+
+/* Sub ULs style */
+.udropdown ul li ul {
+    position: absolute;
+    left: -5000px;
+    top: auto;
+    opacity: 0;
+    width: 170px;
+    visibility: hidden;
+    box-shadow: 2px 2px 5px gray;
+    -webkit-transition: opacity .3s, visibility 0s .3s, left 0s .3s;
+    transition: opacity .3s, visibility 0s .3s, left 0s .3s;
+}
+
+/* First Sub Levels UL style on hover */
+.udropdown ul li:hover > ul {
+    visibility: visible;
+    left: 0;
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+/* Sub level Menu list items (alters style from Top level List Items) */
+.udropdown ul li ul li {
+    display: list-item;
+    float: none;
+}
+
+/* 2nd and beyond Sub Levels vertical offset after 1st level sub menu */
+.udropdown ul li ul li ul {
+    top: 0;
+    left: 100%;
+}
+
+/* Sub Levels link style on hover and when active */
+.udropdown ul ul li:hover > a {
+    background: #70402E;
+}
+
+/* Sub Levels UL style on hover */
+.udropdown ul ul li:hover > ul {
+    left: 100%;
+}
+
+/* Sub level menu links style */
+.udropdown ul li ul li a {
+    font: normal 14px 'Bitter', sans-serif;
+    padding: 10px;
+    margin: 0;
+    background: #9B5323;
+    border-right: none;
+    border-top-width: 0;
+    border-bottom: 1px solid gray;
+}
+
+/* LIs with a sub UL style */
+.udropdown ul li > a {
+    /* add padding to accomodate arrow inside LIs */
+    padding-right: 25px;
+}
+
+/* LIs with NO sub UL style */
+.udropdown ul li > a:only-child {
+    /* undo padding for non submenu LIs */
+    padding-right: 10px;
+}
+
+/* LIs with a sub UL pseudo class */
+.udropdown ul li > a:after {
+    /* add arrow inside LIs */
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border: 5px solid transparent;
+    border-top-color: #FFFFFF;
+    top: 50%;
+    right: 8px;
+}
+
+/* LIs with NO sub UL pseudo class */
+.udropdown ul li > a:only-child:after {
+    /* undo arrow for non submenu LIs */
+    display: none;
+}
+
+/* Sub ULs' LIs with a sub UL pseudo class */
+.udropdown ul li ul li > a:after {
+    /* change arrow to right arrow inside sub UL LIs */
+    border-top-color: transparent;
+    border-left-color: #FFFFFF;
+    top: 40%;
+    right: 8px;
+}
+
+/* ####### responsive layout CSS ####### */
+
+@media (max-width: 800px) {
+    /* FIRST breaking point
+    Last two top menu items' sub ULs should drop to the left (instead of right)
+   Change 2 to a different number to exclude/include more top menu items based on menu and max-width setting above
+		*/
+
+   .udropdown ul li:nth-last-of-type(-n+2) ul li:hover > ul {
+        left: -100%;
+    }
+}
+
+@media (max-width: 500px) {
+    /* SECOND breaking point 
+	For mobile and screen browser windows
+	Get Sub ULs to expand entire width of document and drop down
+	Changes menu reveal type from "visibility" to "display" to overcome bug. See comments below
+		*/
+
+    .udropdown ul li {
+        position: static;
+    }
+
+    .udropdown ul li ul {
+        width: 100%;
+        border-top: 2px solid #eee;
+/* change menu reveal type from "visibility" to "display". Former seems to cause browser to jump to top of page sometimes when menu header is tapped on */
+				display: none;
+    }
+
+    .udropdown ul li:hover > ul {
+	display: block;
+        left: 0 !important;
+        top: auto;
+    }
+
+    .udropdown ul ul li:hover > ul {
+        left: 0 !important;
+        top: auto;
+    }
+}
+
+/*   */
+
+  .wrapper {
+        display: grid;
+        border:1px solid #000;
+        grid-gap: 10px;
+        background-color: #FEEEF1;
+        color: #000;
+    }
+  .wrapper:nth-child(even) {
+          background-color: #86AEB1;
+    }
+    .lcols11{
+        grid-template-columns:  1fr 1fr ;
+      }
+    .lcols7{
+        grid-template-columns: minmax(auto, 40%) minmax(auto, 15%) minmax(auto, 5%)  minmax(auto, 15%) minmax(auto, 15%) minmax(auto, 5%) minmax(auto, 5%) ;
+      }
+    .lcols6{
+        grid-template-columns: 4fr 2fr 1fr  2fr 2fr 1fr ;
+      }
+    .lcols6a{
+        grid-template-columns: 4fr 2fr 2fr  2fr 2fr 1fr 1fr ;
+      }
+.cwrapper {
+  display: flex;
+  flex-direction: row;  
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+  height: 30px;  
+  background-color: red;
+}
+
+.button {
+  width: 100%;
+  height: 100%;  
+  margin: 2px;
+  border: 1px solid #CCCC;
+  display: flex;
+  flex-direction: row;  
+}
+
+  .label {
+  flex-grow: 1;
+  align-self: center;
+  text-align: center;
+  color: white;
+  display: block;
+  font-size: 20px;
+}
+
+.color1 {
+  background-color: #518672;
+}
+.color2 {
+  background-color: #CDB0B5;
+}
+
+/*   */
+
+   .lwidth {
+       margin: left;
+       width: 95%;
+       border: 3px solid #73AD21;
+       padding: 10px;
+     }
+
+   .lwidth2 {
+       margin: auto;
+       border: 3px solid #73AD21;
+       padding: 10px;
+     }
+  .lwidth2:nth-child(even) {
+          background-color: #86AEB1;
+    }
+
+  .lwrapper {
+        display: grid;
+        border:1px solid #000;
+        grid-gap: 10px;
+        background-color: #FEEEF1;
+        color: #000;
+    }
+
+  .lwrapper:nth-child(even) {
+          background-color: #86AEB1;
+    }
+
+  .swrapper {
+        display: grid;
+         grid-template-columns: 3fr  6fr   3fr;
+        border:1px solid #000;
+        grid-gap: 10px;
+        background-color: #86AEB1;
+        color: #000;
+    }
+    
+
+/*   */
+
+   .fcontent{
+       width: 100%;
+       margin: left;
+    }
+
+  .fwrapper{
+       display: grid;
+        grid-gap: 10px;
+        background-color: #AAEEA1;
+       border: 1px;
+       margin: 1px;
+       padding: 1px;
+/*       width: 75%;  */
+    }
+
+  .fcols1 {
+       grid-template-columns: 3fr   minmax(auto, 10%)  minmax(auto, 10%);
+     }
+  .fcols2 {
+       grid-template-columns: 1fr  3fr;
+     }
+  .fcols2a {
+       grid-template-columns: 2fr  3fr;
+     }
+  .fcols3 {
+       grid-template-columns: 3fr  3fr 1fr ;
+     }
+  .fcols3a {
+       grid-template-columns: 1fr  1fr 5fr ;
+     }
+  .fcols4 {
+       grid-template-columns: 2fr  3fr 4fr 1fr ;
+     }
+  .fcols42 {
+       grid-template-columns: 1fr  2fr  1fr 3fr  ;
+     }
+  .fcols4b {
+       grid-template-columns: 1fr  2fr 2fr 2fr  ;
+     }
+  .fcols4c {
+       grid-template-columns: 2fr  2fr 2fr 2fr  ;
+     }
+  .fcols5 {
+       grid-template-columns: 2fr  1fr 2fr 2fr 2fr ;
+     }
+  .fcols5a {
+       grid-template-columns: 1fr  2fr 2fr 5fr 2fr   ;
+     }
+  .fcols5b {
+       grid-template-columns: 2fr  3fr 2fr 2fr 2fr ;
+     }
+  .fcols5c {
+       grid-template-columns: 1fr  1fr 3fr 3fr 1fr   ;
+     }
+  .fcols6 {
+       grid-template-columns: 2fr  1fr  2fr 2fr 5fr 2fr   ;
+     }
+  .fcols7 {
+       grid-template-columns: 1fr  1fr  2fr 2fr 2fr 2fr  1fr 1fr ;
+     }
+  .fcols21 {
+       grid-template-columns: 4fr  1fr;
+     }
+   .box {
+          color: #000;
+          font-size: 80%; 
+          border-right: 1px;
+/*       
+          background-color: #444;
+          padding: 20px;
+ */
+     }
+
+   .ebox {
+          color: #000;
+          font-size: 80%; 
+          border-right: 1px;
+          background-color: #63BECE;
+       }
+   .elabel {
+          color: #000;
+          font-size: 80%; 
+          border-right: 1px;
+          background-color: #DC8288;
+       }
+
+/*       
+   .box:nth-child(even) {
+          background-color: #ccc;
+          color: #000;
+      }
+*/
+
+  .fbox{
+       grid-row: auto;
+       border: 1px;
+       margin: 1px;
+       padding: 1px;
+       background-color: #8E848A;
+     }
+
+  .gbox{
+       grid-row: auto;
+       border: 1px;
+       margin: 1px;
+       padding: 1px;
+       background-color: #D3B4AE;
+     }
+
+  .fwidth{
+      grid-column: 2 / 3;
+       grid-row: 3;
+       border: 1px;
+       margin: 1px;
+       padding: 1px;
+       background-color: #8E848A;
+  }
+ .myForm {
+    display: grid;
+    grid-template-columns: [labels] auto [controls] 1fr;
+    grid-auto-flow: row;
+    grid-gap: 1px;
+    background: #eee;
+    padding: 1px;
+    background-color: #AAEEA1;
+   /* background-color: #8E848A;*/
+  }
+  .myForm > label  {
+    grid-column: labels;
+    grid-row: auto;
+  }
+  .myForm > input,
+  .myForm > textarea,
+  .myForm > button {
+    grid-column: controls;
+    grid-row: auto;
+    border: none;
+    padding: 1px;
+  }
+
+ .mytxt {
+       white-space:normal;
+    }
+
+/*   */
+.slid-content{max-width:980px;margin:auto}.slid-rest{overflow:hidden}
+.slid-centered tr th,.slid-centered tr td{text-align:center}
+.slid-section,.slid-code{margin-top:16px!important;margin-bottom:16px!important}
+.mySlides {display:none;}
+
+/*   */
+.btn {
+  display: inline;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0px;
+  margin 0px 25px 0px 25px;
+  font-size: 1rem;
+  line-height: 1.0;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover, .btn:focus {
+  text-decoration: none;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn.disabled, .btn:disabled {
+  opacity: 0.65;
+}
+
+
+.btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-warning:hover {
+  color: #212529;
+  background-color: #e0a800;
+  border-color: #d39e00;
+}
+
+.btn-warning:focus, .btn-warning.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+}
+
+.btn-warning.disabled, .btn-warning:disabled {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active,
+.show > .btn-warning.dropdown-toggle {
+  color: #212529;
+  background-color: #d39e00;
+  border-color: #c69500;
+}
+
+.btn-warning:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus,
+.show > .btn-warning.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-danger:focus, .btn-danger.focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+
+.btn-danger.disabled, .btn-danger:disabled {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
+.show > .btn-danger.dropdown-toggle {
+  color: #fff;
+  background-color: #bd2130;
+  border-color: #b21f2d;
+}
+
+.btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus,
+.show > .btn-danger.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+
+/*                             */
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+
+/*   */
+

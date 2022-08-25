@@ -1,0 +1,64 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}{{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>
+       <form method="post" action="{{.Action}}/{{.Ingre.Id}}">
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="period">Periodo</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="period" name="period" size="12"  value="{{.Ingre.Period | DATEFORMAT}}" readonly autofocus />
+              </div>
+           </div>
+		
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="fecha">Fecha</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="fecha" name="fecha" size="12"  value="{{.Ingre.Fecha | DATEFORMAT}}" readonly />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="monto">Monto</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="monto" name="monto" size="16"  value="{{.Ingre.Amount | FORMAT64}}"  readonly/>
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="descripcion">Descripcion</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="descripcion" name="descripcion" size="16"  value="{{.Ingre.Descripcion }}"  readonly/>
+              </div>
+           </div>
+
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+		 <input type="hidden" name="token" value="{{.token}}">
+              </div>
+              <div class="fbox">
+                 <span>
+                 <input type="submit" name="action" value="Actualizar" />
+                 <input type="submit" name="action" value="Cancelar" />
+                 </span>
+              </div>
+           </div>
+		
+	</form>
+	
+	{{template "footer" .}}
+  </div>
+
+{{end}}

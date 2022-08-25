@@ -1,0 +1,122 @@
+{{define "title"}}Estado Condominio{{end}}
+{{define "head"}}  {{end}}
+{{define "foot"}}{{end}}
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+
+<h4 class="center"> Reporte Condominio del {{.Per.Inicio |  PRETTYTIME }} al  {{.Per.Final  | PRETTYTIME}} </h4>
+<br/>
+<h5 class="center">   Ingresos  Cuotas del {{.Per.Inicio | DATEFORMAT }} 
+
+	  <div class="lwrapper fcols5c">
+               <div class="box">             </div>
+               <div class="box"> Periodo     </div>
+               <div class="gbox"> Del {{.Per.Inicio | DATEFORMAT }} </div>
+               <div class="gbox"> Al {{.Per.Final   | DATEFORMAT }} </div>
+               <div class="box">             </div>
+          </div>
+
+	  <div class="lwrapper fcols5b">
+             <div class="box"> Apto        </div>
+             <div class="box"> Tipo        </div>
+             <div class="box"> Fecha       </div>
+             <div class="box"> Monto       </div>
+          </div>
+
+     {{ range  .LisCuot}}
+         <div class="lwrapper fcols5b">
+            <div class="box"> {{ .Apto  }} </div>
+            <div class="box"> {{ .Tipo  }} </div>
+            <div class="box"> {{ .Fecha | DATEFORMAT }} </div>
+            <div class="box"> {{ .Amount | FORMAT64 }} </div>
+         </div>
+     {{end}}
+
+<h5 class="center">   Ingresos Cuotas  Totales   {{.STot.SCuot | FORMAT64 }} </h5> 
+
+<br/>
+<h5 class="center">  Otros  Ingresos  del {{.Per.Inicio | DATEFORMAT }} 
+
+	  <div class="lwrapper fcols5a">
+             <div class="box"> Tipo      </div>
+             <div class="box"> Fecha      </div>
+             <div class="box"> Monto      </div>
+             <div class="box"> Descripcion      </div>
+          </div>
+
+     {{ range  .LisIngre}}
+          <div class="lwrapper fcols5a">
+             <div class="box"> {{ .Tipo  }} </div>
+             <div class="box"> {{ .Fecha | DATEFORMAT }} </div>
+             <div class="box"> {{ .Amount | FORMAT64 }} </div>
+             <div class="box"> {{ .Descripcion  }} </div>
+         </div>
+      {{end}}
+
+<h5 class="center">   Otros Ingresos  Totales   {{.STot.SIng | FORMAT64 }} </h5> 
+
+<br/>
+<h5 class="center">   Egresos  del {{.Per.Inicio | DATEFORMAT }} 
+
+	  <div class="lwrapper fcols5c">
+               <div class="box"> Periodo     </div>
+               <div class="box"> {{.Per.Inicio  | DATEFORMAT }}     </div>
+               <div class="box">             </div>
+               <div class="box">             </div>
+               <div class="box">             </div>
+          </div>
+
+	  <div class="lwrapper fcols5a">
+             <div class="box"> Tipo      </div>
+             <div class="box"> Fecha      </div>
+             <div class="box"> Monto      </div>
+             <div class="box"> Descripcion      </div>
+          </div>
+
+     {{ range  .LisEgre}}
+          <div class="lwrapper fcols5a">
+             <div class="box"> {{ .Tipo  }} </div>
+             <div class="box"> {{ .Fecha | DATEFORMAT }} </div>
+             <div class="box"> {{ .Amount | FORMAT64 }} </div>
+             <div class="box"> {{ .Descripcion  }} </div>
+         </div>
+      {{end}}
+
+<h5 class="center">   Egresos  Totales   {{.STot.SEgre | FORMAT64 }} </h5> 
+<br/>
+<h5 class="center">   Estado Condominio  del {{.Per.Inicio | DATEFORMAT }} 
+    al   {{.Per.Final  | DATEFORMAT }} </h5> 
+
+	  <div class="lwrapper fcols4b">
+             <div class="box"> Apto       </div>
+             <div class="box"> Monto Pagado      </div>
+             <div class="box"> Atraso       </div>
+             <div class="box"> Con Mora        </div>
+          </div>
+
+     {{ range  .LisAmt}}
+         <div class="lwrapper fcols4b">
+            <div class="box"> {{ .Codigo  }}   </div>
+            <div class="box"> {{ .Amount    | FORMAT64 }} </div>
+            {{ if eq .Atraso 0 }}
+               <div class="box">  </div>
+            {{ else}}
+               <div class="box"> {{ .Atraso  | FORMAT64 }} </div>
+            {{ end }}
+            {{ if eq .Mora 0 }}
+               <div class="box">  </div>
+            {{ else}}
+            <div class="box"> {{ .Mora     | FORMAT64 }} </div>
+            {{ end }}
+         </div>
+     {{end}}
+<h5 class="center">   Ingresos  Totales   {{.STot.SAmount | FORMAT64 }} </h5> 
+<h5 class="center">   Atrasos  Totales   {{.STot.SAtra    | FORMAT64 }} </h5> 
+
+
+
+      {{template "footer" .}}
+{{end}}
+

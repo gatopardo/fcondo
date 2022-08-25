@@ -1,0 +1,49 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}<h5>Aptos</h5>{{end}}
+{{define "content"}}
+
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>  
+       <form method="post" action="{{.Action}}" >
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+               <label for="codigo">Codigo</label>
+            </div>
+            <div class="fbox">
+               <input type="text" id="codigo" name="codigo" size="2" size="2" maxlength="2" placeholder="codigo" />
+            </div>
+       </div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+                <label for="descripcion">Descripcion</label>
+            </div>
+            <div class="fbox">
+                <input type="text" id="descripcion" name="descripcion" size="32" maxlength="48" placeholder="Descripcion" />
+            </div>
+       </div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+		<input type="hidden" name="token" value="{{.token}}">
+            </div>
+            <div class="fbox">
+                 <span>
+		<input type="submit" name="action"  value="Crear" />
+		<input type="submit" name="action"  value="Cancelar" />
+                 </span>
+            </div>
+       </div>
+       </form>
+  {{  range  .LisApts}}
+         <div class="lwrapper fcols3">
+           <div class="box"> {{ .Codigo }} </div>
+           <div class="box"> {{ .Descripcion }} </div>
+         </div>
+   {{end}} 
+
+	
+</div>
+
+{{end}}

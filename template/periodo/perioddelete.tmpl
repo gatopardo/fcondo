@@ -1,0 +1,43 @@
+{{define "title"}}Eliminar Periodo{{end}}
+{{define "head"}}
+{{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>
+       <form method="post">
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="inicio">Inicio</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="inicio" name="inicio" size="10" value="{{.Period.Inicio | DATEFORMAT}}" autofocus />
+              </div>
+           </div>
+		
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="final">Final</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="final" name="final" size="10" value="{{.Period.Final | DATEFORMAT}}"  readonly/>
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols4">
+              <div class="fbox">
+		 <input type="hidden" name="token" value="{{.token}}">
+              </div>
+              <div class="fbox">
+                 <input type="submit" name="action" value="Eliminar" />
+                 <input type="submit" name="action" value="Cancelar" />
+              </div>
+           </div>
+		
+	</form>
+	
+	{{template "footer" .}}
+  </div>
+
+{{end}}
+{{define "foot"}}{{end}}

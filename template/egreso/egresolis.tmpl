@@ -1,0 +1,97 @@
+{{define "title"}}Listar Egresos{{end}}
+{{define "head"}}  {{end}}
+{{define "header"}}Listar Egresos{{end}}
+{{define "foot"}}
+ <h5 class="center">
+       Egresos 
+     del {{.Per.Inicio | DATEFORMAT }} 
+    al   {{.Per.Final  | DATEFORMAT }} </h5> 
+ {{end}}
+
+
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+
+     <form action="/egreso/list" method="post">
+
+   	<div class="fwrapper fcols4">
+           <div class="box">
+               <label for="period" >Periodo</label>
+           </div>
+           <div class="box">
+               <select name="id"> 
+                  {{range $key, $value := .LisPeriod}}
+                    <option value="{{ $value.Id }}"
+                    {{ if eq $value.Id  $.Per.Id }} selected {{end}}
+                     >
+                   {{ $value.Inicio | DATEFORMAT }} </option>
+                  {{end}}
+               </select>
+           </div>
+           <div class="box">
+                 <span>
+		<input type="submit" name="action"  value="Seguir" />
+		<input type="submit" name="action"  value="Cancelar" />
+                 </span>
+           </div>
+           <div class="box">
+		<input type="hidden" name="token" value="{{.token}}">
+           </div>
+        </div>
+       </form>
+
+	  <div class="lwrapper fcols5c">
+               <div class="box">             </div>
+               <div class="box"> Periodo     </div>
+               <div class="box"> {{.Per.Inicio  | DATEFORMAT }}     </div>
+               <div class="box"> {{.Per.Final   | DATEFORMAT }}     </div>
+               <div class="box">             </div>
+          </div>
+
+	  <div class="lwrapper fcols5a">
+             <div class="box"> Tipo      </div>
+             <div class="box"> Fecha      </div>
+             <div class="box"> Monto      </div>
+             <div class="box"> Descripcion      </div>
+             {{ if or ( eq $.Level 3)  ( eq $.Level 4)}}
+                <div class="box">   
+                  <a class="btn btn-warning" href ="#">  Ed </a> 
+                </div>
+             {{end}} 
+             {{ if eq $.Level 5}}
+                <div class="box">   
+                  <span>
+                  <a class="btn btn-warning" href ="#">  Ed </a> 
+                  <a class="btn btn-danger" href ="#">  Del </a> 
+                  </span>
+                </div>
+             {{end}} 
+          </div>
+
+     {{ range  .LisEgre}}
+          <div class="lwrapper fcols5a">
+             <div class="box"> {{ .Tipo  }} </div>
+             <div class="box"> {{ .Fecha | DATEFORMAT }} </div>
+             <div class="box"> {{ .Amount | FORMAT64 }} </div>
+             <div class="box"> {{ .Descripcion  }} </div>
+                {{ if or ( eq $.Level 3)  ( eq $.Level 4)}}
+              <div class="box">
+                <a class="btn btn-warning" href="/egreso/update/{{.Id}}" > Ed </a>
+              </div>
+           {{end}} 
+           {{ if eq $.Level 5}}
+              <div class="box">
+                  <span>
+                    <a class="btn btn-warning" href="/egreso/update/{{.Id}}" > Ed </a>
+                   <a class="btn btn-danger" href="/egreso/delete/{{.Id}}" > Del </a>
+                </scan>
+                  </span>
+              </div>
+           {{end}} 
+         </div>
+      {{end}}
+
+{{end}}
+

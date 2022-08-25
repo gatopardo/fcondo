@@ -1,0 +1,56 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}}
+{{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>
+       <form method="post" action="{{.Action}}/{{.Balan.Id}}">
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="period">Periodo</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="period" name="period" size="12"  value="{{.Balan.Period | DATEFORMAT}}" readonly autofocus />
+              </div>
+           </div>
+		
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="monto">Monto</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="monto" name="monto" size="16"  value="{{.Balan.Amount | FORMAT64}}"  readonly/>
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="cuota">Cuota</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="cuota" name="cuota" size="12"  value="{{.Balan.Cuota | FORMAT64 }}"  readonly/>
+              </div>
+           </div>
+
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+		 <input type="hidden" name="token" value="{{.token}}">
+              </div>
+              <div class="fbox">
+                 <span>
+                 <input type="submit" name="action" value="Actualizar" />
+                 <input type="submit" name="action" value="Cancelar" />
+                 </span>
+              </div>
+           </div>
+		
+	</form>
+	
+	{{template "footer" .}}
+  </div>
+
+{{end}}
+{{define "foot"}}{{end}}

@@ -1,0 +1,128 @@
+{{define "title"}}Crear una Cuenta{{end}}
+{{define "head"}}{{JS "//www.google.com/recaptcha/api.js"}}{{end}}
+{{define "foot"}}{{end}}
+
+{{define "content"}}
+   <div class="fcontent">
+
+      <h3 class="mcenter">{{template "title" .}}</h3>
+
+	<form enctype="multipart/form-data"  action="/user/register"  method="post"  >
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="cuenta">Cuenta </label> </div>
+              <div class="fbox">
+                <input type="text" id="cuenta" name="cuenta" size="16" maxlength="32" placeholder="Cuenta" autofocus />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="nivel">Nivel</label> </div> 
+              <div class="fbox">
+                <input type="range" id="nivel" name="nivel" size="2" maxlength="2" placeholder="Nivel" min="0" max="5" value="1" />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="password" >Clave </label> </div>
+              <div class="fbox">
+                <input type="password" id="password" name="password" size="16" maxlength="32" placeholder="Password"/>
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox">
+                <label for="password_verify" > Verificar Clave</span> </label>
+              </div>
+              <div class="fbox">
+               <input type="password" id="password_verify" name="password_verify" size="16" maxlength="32" placeholder="Verify Password" />
+              </div>
+           </div>
+
+	<div class="fwrapper fcols2">
+           <div class="fbox"> <label for="aptId" ><span>Apto</span></label> </div>
+           <div class="fbox">
+               <select name="aptId"> 
+                  {{range $key, $value := .LisApts}}
+                    <option value="{{ $value.Id }}">{{ $value.Codigo }}</option>
+                  {{end}}
+               </select>
+           </div>
+	</div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="fname">Nombre </label> </div>
+              <div class="fbox">
+                <input type="text" id="fname" name="fname" size="48" maxlength="64" placeholder="Nombre" />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="lname">Apellido </label> </div>
+              <div class="fbox">
+                <input type="text" id="lname" name="lname" size="48" maxlength="64" placeholder="Apellido" />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="address">Direccion </label> </div>
+              <div class="fbox">
+                <input type="text" id="address" name="address" size="48" maxlength="64" placeholder="Direccion" />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="email" >Email </label> </div>
+              <div class="fbox">
+                <input type="email" id="email" name="email" size="32" maxlength="48" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Email" />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="tele" >Tele </label> </div>
+              <div class="fbox">
+                <input type="tel" id="tele" name="tele" size="12" maxlength="24" placeholder="123-456-7890"
+           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="mobil" >mobil </label> </div>
+              <div class="fbox">
+                <input type="tel" id="mobil" name="mobil" size="12" maxlength="24" placeholder="123-456-7890"
+           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  />
+             </div>
+           </div>
+
+           <div class="fwrapper fcols2 ">
+               <div class="fbox"> <label for="photo"> Escoger imagen</label> </div>
+               <div class="fbox">
+                   <input type="file" id="photo" name="photo"  accept="image/*" value ="{{.pers.Photo}}"  />
+               </div>
+            </div>
+	   
+           <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="tipo">Tipo </label> </div>
+              <div class="fbox">
+               <select id="tipo" name="tipo"> 
+                 {{range $key, $value := .LisTips}}
+                      <option value="{{ $value.Code }}" >{{ $value.Stip }}</option>
+                  {{end}}
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <input type="hidden" name="token" value="{{.token}}"> </div>
+              <div class="fbox">
+                 <span> 
+                     <input type="submit" name="action" formenctype="multipart/form-data" value="Crear" />
+                     <input type="submit" name="action" value="Cancelar" />
+                 </span> 
+             </div>
+           </div>
+	
+	</form>
+
+  </div>
+
+{{end}}
+

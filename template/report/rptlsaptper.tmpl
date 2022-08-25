@@ -1,0 +1,58 @@
+{{define "title"}}Estado Apto {{.Apt.Codigo}} {{end}}
+{{define "head"}}  {{end}}
+{{define "foot"}}{{end}}
+{{define "header"}} 
+  <h5 class="center" > 
+      Resumen Estado Apto {{.Codigo}}
+      al dia {{.Final | DATEFORMAT }}
+      {{ if le 0 .Value }}
+         no debe
+      {{else}}
+          debe {{ .Value  | FORMAT64}}
+      {{end}}
+  </h5> 
+{{end}}
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+          {{range .LisPay }}
+             {{ template "header" . }} 
+       	  <div class="lwrapper fcols5b">
+               <div class="box"> Apto     </div>
+               <div class="box"> {{.Codigo}}     </div>
+               <div class="box"> {{.Fname | CONCATSTR  .Lname}}  </div>
+               <div class="box">             </div>
+               <div class="box">             </div>
+          </div>
+
+	  <div class="lwrapper fcols5b">
+             <div class="box"> Period       </div>
+             <div class="box"> Cuota        </div>
+             <div class="box"> Fecha       </div>
+             <div class="box"> Pago        </div>
+             <div class="box"> Balance       </div>
+          </div>
+
+     {{ range  .APaym}}
+         <div class="lwrapper fcols5b">
+            <div class="box"> {{ .Inicio   | DATEFORMAT }} </div>
+            <div class="box"> {{ .Cuota    | FORMAT64 }} </div>
+         {{ if eq .Amount 0 }}
+            <div class="box"> </div> <div class="box"> </div>
+         {{ else }}   
+            <div class="box"> {{ .Fecha    | DATEFORMAT }} </div>
+            <div class="box"> {{ .Amount   | FORMAT64 }} </div>
+         {{end }}
+         {{ if eq .Balance 0 }}
+            <div class="box"> </div> 
+         {{ else }}   
+            <div class="box"> {{ .Balance  | FORMAT64 }} </div>
+         {{end }}
+         </div>
+     {{end}}
+  {{end}}
+
+      {{template "footer" .}}
+{{end}}
+

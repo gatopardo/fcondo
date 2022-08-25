@@ -1,0 +1,85 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}{{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>
+       <form method="post" action="{{.Action}}/{{.Ingre.Id}}">
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="period">Periodo</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="period" name="period" size="12"  value="{{.Ingre.Period | DATEFORMAT}}" readonly />
+              </div>
+           </div>
+		
+           {{ $save := .}}
+	
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+               <label for="tipoId" >Tipo</label>
+              </div>
+		
+           <div class="fbox">
+               <select name="tipId"> 
+                  {{range $key, $value := .LisTip}}
+                    <option value="{{ $value.Id }}"
+                    {{if eq $value.Id $save.Ingre.TipoId}} selected  {{end}}
+                   >
+                     {{ $value.Descripcion }}
+                 </option>
+                  {{end}} 
+               </select>
+           </div>
+        </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="fecha">Fecha</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="fecha" name="fecha" size="12"  value="{{.Ingre.Fecha | DATEFORMAT}}" />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="amount">Monto</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="amount" name="amount" size="16"  value="{{.Ingre.Amount | FORMAT64}}"  />
+              </div>
+           </div>
+
+	<div class="fwrapper fcols2">
+           <div class="fbox">
+               <label for="descripcion" >Descripcion</label>
+           </div>
+            <div class="fbox">
+                <input type="text" id="descripcion" name="descripcion" size="20" maxlength="48" value="{{.Ingre.Descripcion}}"/>
+           </div>
+         </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <span>
+		 <input type="hidden" name="token" value="{{.token}}">
+                 </span>
+              </div>
+              <div class="fbox">
+                 <span>
+                 <input type="submit" name="action" value="Actualizar" />
+                 <input type="submit" name="action" value="Cancelar" />
+                 </span>
+              </div>
+           </div>
+		
+	</form>
+	
+	{{template "footer" .}}
+  </div>
+
+{{end}}

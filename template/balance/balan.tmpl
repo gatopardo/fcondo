@@ -1,0 +1,68 @@
+{{define "title"}}Crear Balance{{end}}
+{{define "head"}} {{end}}
+{{define "content"}}
+
+  <div class="fcontent">
+
+       <h3 class="mcenter">{{template "title" .}}</h3>  
+
+       <form method="post" action="/balance/register" >
+
+	<div class="fwrapper fcols2">
+           <div class="fbox">
+               <label for="period" >Periodo</label>
+           </div>
+           <div class="fbox">
+               <select name="periodId"> 
+                  {{range $key, $value := .LisPeriod}}
+                    <option value="{{ $value.Id }}">{{ $value.Inicio | DATEFORMAT }}</option>
+                  {{end}}
+               </select>
+           </div>
+	</div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+               <label for="amount">Amount</label>
+            </div>
+            <div class="fbox">
+               <input type="text" id="amount" name="amount" size="12"  maxlength="16" placeholder="amount" />
+            </div>
+       </div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+                <label for="cuota">Cuota</label>
+            </div>
+            <div class="fbox">
+                <input type="text" id="cuota" name="cuota" size="12" maxlength="16" placeholder="Cuota" />
+            </div>
+       </div>
+
+       <div class="fwrapper fcols2 ">
+            <div class="fbox">
+		<input type="hidden" name="token" value="{{.token}}">
+            </div>
+            <div class="fbox">
+                 <span>
+		<input type="submit" name="action"  value="Crear" />
+		<input type="submit" name="action"  value="Cancelar" />
+                 </span>
+            </div>
+       </div>
+       </form>
+
+  {{  range  .LisBalans}}
+         <div class="lwrapper fcols3">
+           <div class="box"> {{ .Period | DATEFORMAT }} </div>
+           <div class="box"> {{ .Amount | FORMAT64 }} </div>
+           <div class="box"> {{ .Cuota  | FORMAT64 }} </div>
+         </div>
+   {{end}} 
+
+	
+	{{template "footer" .}}
+</div>
+
+{{end}}
+{{define "foot"}}<h5>Categoria</h5>{{end}}

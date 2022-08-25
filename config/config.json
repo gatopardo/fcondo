@@ -1,0 +1,63 @@
+   {
+	"Database": {
+                "Remote"     : false,
+                "Origin":    "localhost",
+		"Type"       : "PostgreSQL",
+		"PostgreSql" : {
+			"Username": "postgres",
+			"Password": "",
+			"Name": "dbcondo",
+			"Hostname": "127.0.0.1",
+			"Port": 5436,
+			"Parameter": "disable"
+		}
+	},
+	"Server": {
+                "Remote": false,
+                "Origin": "localhost",
+		"Hostname": "0.0.0.0",
+		"UseHTTP": true,
+		"UseHTTPS": true,
+		"HTTPPort": 9090,
+		"HTTPSPort": 4430,
+		"CertFile": "tls/server.crt",
+		"KeyFile": "tls/server.key"
+	},
+         "Email": {
+		"Username": "gato.pardo",
+		"Password": "valle1nuevo5",
+		"Hostname": "smtp.gmail.com",
+		"Port": 587,
+		"From": "gato.pardo@gmail.com"
+	},
+	"Recaptcha": {
+		"Enabled": true,
+		"Secret":  "6Letx2YUAAAAALqz5mD1pkEQNfcseEj-gKbgb8hb",
+		"SiteKey": "6Letx2YUAAAAAGPXh3EGrxsTTw9YVmbBEeU1uLOZ"
+	},
+	"Session": {
+		"SecretKey": "@r4B?EThaSEh_drudR7P_hub=s#s2Pah",
+		"Name": "fcondo",
+		"Options": {
+			"Path": "/",
+			"Domain": "",
+			"MaxAge": 28800,
+			"Secure": false,
+			"HttpOnly": true
+		}
+	},
+	"Template": {
+		"Root": "base",
+		"Children": [
+			"partial/menu",
+			"partial/footer"
+		]
+	},
+	"View": {
+		"BaseURI": "/",
+		"Extension": "tmpl",
+		"Folder": "template",
+		"Name": "blank",
+		"Caching": true
+	}
+  }

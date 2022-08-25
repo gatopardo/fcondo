@@ -1,0 +1,256 @@
+ {{if eq .AuthLevel "auth"}}
+     {{if eq .level  1}}
+        {{ template "menu1"   }}
+     {{else if eq .level  2}}
+        {{ template "menu2"   }}
+     {{else if gt .level  2}}
+       {{ template "menu3"   }}
+     {{end}}
+ {{else}}
+   {{ template "menu0"   }}
+ {{end}}
+
+
+ {{define "menu01"}}
+    <li> <a  href="/about"> Somos </a> </li>
+    <li> <a href="/logout"> Salir </a> </li>
+ {{end}}
+
+{{define "menu0"}}
+  <div class="udropdown">
+  <ul>
+    <li> <a href="/about">Somos</a> </li>
+    <li> <a  href="/login">Entrar</a> </li>
+  </ul>
+    <br style="clear: left" />
+  </div>
+ {{end}}
+
+
+ {{define "menu1"}}
+
+  <div class="udropdown">
+    <ul>
+       <li>  <a href="/"> Home    </a> </li>
+
+       <li> <a href="#" > Ingresos </a> 
+          <ul>
+            <li> <a href="#" > Cuotas </a> 
+              <ul>
+                 <li><a href="/cuota/list">   Listar     </a></li>
+              </ul>
+            </li>
+            <li> <a href="#" > Otros Ingresos </a> 
+              <ul>
+                  <li><a href="/ingreso/list">   Listar     </a></li>
+              </ul>
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Egresos </a> 
+          <ul>
+            <li><a href="/egreso/list">   Listar     </a></li>
+          </ul>
+       </li>
+
+       <li> <a href="#" > Mensajes </a> 
+          <ul>
+            <li> <a href="#" > Correos </a> 
+              <ul>
+                  <li>  <a href="/email" > Envio </a> </li>
+              </ul>
+            </li>
+            <li>  <a href="#" > Reportes </a> 
+              <ul>
+                  <li><a href="/report/rptapto"> Estado Apto  </a></li>
+                  <li><a href="/report/rptcondo">   Condominio       </a></li>
+              </ul>
+            </li>
+          </ul>
+       </li>
+       {{ template "menu01"  }}
+    </ul>
+    <br style="clear: left" />
+  </div>
+
+
+ {{end}}
+
+
+{{define "menu2"}}
+
+
+  <div class="udropdown">
+    <ul>
+       <li>  <a href="/"> Home    </a> </li>
+       <li>  <a href="#"> Configurar </a> 
+          <ul>
+            <li><a href="#">  Usuarios   </a>
+              <ul>
+                 <li><a href="/user/register">  Registrar </a></li>
+                 <li><a href="/user/list"  >  Listar      </a></li>
+                 <li><a href="/user/chpass">   Cambio Clave      </a></li>
+              </ul>
+            <li><a href="#">  Otros   </a>
+              <ul>
+                <li><a href="#" > Aptos </a> 
+                    <ul>
+                       <li><a href="/apto/register"> Registrar   </a></li>
+                       <li><a href="/apto/list">   Listar      </a></li>
+                    </ul>
+                </li>
+                <li> <a href="#" > Categorias </a>
+                    <ul>
+                      <li><a href="/categoria/register"> Registrar   </a></li>
+                      <li><a href="/categoria/list">   Listar      </a></li>
+                    </ul>
+                </li>
+              </ul>   
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Ingresos </a> 
+          <ul>
+            <li> <a href="#" > Cuotas </a> 
+              <ul>
+                 <li><a href="/cuota/periodo/register"> Registrar  </a></li>
+                 <li><a href="/cuota/list">   Listar     </a></li>
+              </ul>
+            </li>
+            <li> <a href="#" > Otros Ingresos </a> 
+              <ul>
+                  <li><a href="/ingreso/periodo/register"> Registrar  </a></li>
+                  <li><a href="/ingreso/list">   Listar     </a></li>
+              </ul>
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Egresos </a> 
+          <ul>
+            <li><a href="/egreso/periodo/register"> Registrar  </a></li>
+            <li><a href="/egreso/list">   Listar     </a></li>
+          </ul>
+       </li>
+       <li> <a href="#" > Periodos </a> 
+          <ul>
+            <li> <a href="#" > Balances </a> 
+              <ul>
+                 <li><a href="/balance/register"> Registrar  </a></li>
+                 <li><a href="/balance/list">   Listar     </a></li>
+              </ul>
+            </li>
+            <li> <a href="#"> Periodos </a> 
+              <ul>
+                  <li><a href="/period/register"> Registrar  </a></li>
+                  <li><a href="/period/list">   Listar       </a></li>
+              </ul>
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Mensajes </a> 
+          <ul>
+                  <li>  <a href="/email" > Envio </a> </li>
+          </ul>
+       <li>  <a href="#" > Reportes </a> 
+           <ul>
+                  <li><a href="/report/rptapto"> Estado Apto  </a></li>
+                  <li><a href="/report/rptcondo">   Condominio       </a></li>
+          </ul>
+       </li>
+       {{ template "menu01"  }}
+    </ul>
+    <br style="clear: left" />
+  </div>
+
+
+ {{end}}
+
+{{define "menu3"}}
+
+  <div class="udropdown">
+    <ul>
+       <li>  <a href="/"> Home    </a> </li>
+       <li>  <a href="#"> Configurar </a> 
+          <ul>
+            <li><a href="#">  Usuarios   </a>
+              <ul>
+                 <li><a href="/user/register">  Registrar </a></li>
+                 <li><a href="/user/list"  >  listar      </a></li>
+                 <li><a href="/user/chpass">   Cambio Clave      </a></li>
+              </ul>
+            <li><a href="#">  Otros   </a>
+              <ul>
+                <li><a href="#" > Aptos </a> 
+                    <ul>
+                       <li><a href="/apto/register"> Registrar   </a></li>
+                       <li><a href="/apto/list">   Listar      </a></li>
+                    </ul>
+                </li>
+                <li> <a href="#" > Categorias </a>
+                    <ul>
+                      <li><a href="/categoria/register"> Registrar   </a></li>
+                      <li><a href="/categoria/list">   Listar      </a></li>
+                    </ul>
+                </li>
+              </ul>   
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Ingresos </a> 
+          <ul>
+            <li> <a href="#" > Cuotas </a> 
+              <ul>
+                 <li><a href="/cuota/periodo/register"> Registrar  </a></li>
+                 <li><a href="/cuota/list">   Listar     </a></li>
+              </ul>
+            </li>
+            <li> <a href="#" > Otros Ingresos </a> 
+              <ul>
+                  <li><a href="/ingreso/periodo/register"> Registrar  </a></li>
+                  <li><a href="/ingreso/list">   Listar     </a></li>
+              </ul>
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Egresos </a> 
+          <ul>
+            <li><a href="/egreso/periodo/register"> Registrar  </a></li>
+            <li><a href="/egreso/list">   Listar     </a></li>
+          </ul>
+       </li>
+       <li> <a href="#" > Periodos </a> 
+          <ul>
+            <li> <a href="#" > Balances </a> 
+              <ul>
+                 <li><a href="/balance/register"> Registrar  </a></li>
+                 <li><a href="/balance/list">   Listar     </a></li>
+              </ul>
+            </li>
+            <li> <a href="#"> Periodos </a> 
+              <ul>
+                  <li><a href="/period/register"> Registrar  </a></li>
+                  <li><a href="/period/list">   Listar       </a></li>
+              </ul>
+            </li>
+          </ul>
+       </li>
+       <li> <a href="#" > Mensajes </a> 
+          <ul>
+                  <li>  <a href="/email" > Envio </a> </li>
+          </ul>
+       <li>  <a href="#" > Reportes </a> 
+           <ul>
+               <li><a href="/report/rptapto"> Estado Apto  </a></li>
+               <li><a href="/report/rptlisapto">Reporte Aptos   </a></li>
+               <li><a href="/report/rptcondo"> Condominio       </a></li>
+               <li><a href="/report/rptallcondo"> Reporte  Condo </a></li>
+          </ul>
+       </li>
+       {{ template "menu01"  }}
+    </ul>
+    <br style="clear: left" />
+  </div>
+
+ {{end}}
+
+

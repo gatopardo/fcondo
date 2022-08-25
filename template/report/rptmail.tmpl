@@ -1,0 +1,46 @@
+{{define "title"}}Enviar Correo{{end}}
+{{define "head"}}{{JS "//www.google.com/recaptcha/api.js"}}{{end}}
+{{define "foot"}}{{end}}
+
+{{define "content"}}
+   <div class="fcontent">
+
+      <h3 class="mcenter">{{template "title" .}}</h3>
+	<form enctype="multipart/form-data"  action="/email"  method="post" >
+
+	<div class="myForm">
+                <label for="tema">Tema </label>
+                <input type="text" id="tema" name="tema" size="32" maxlength="64" placeholder="tema" />
+
+                <label for="content">Contenido </label>
+                <textarea id="content" name="content" rows="3" cols="60" maxlength="512" placeholder="content" wrap="hard" class="mytxt" ></textarea>
+        </div>
+              
+	<div class="fwrapper fcols4c">
+        {{range  $key,$value := .LisApts}}
+           <div class="fbox">
+               <input type="checkbox" id="{{$key}}" name="{{$key}}" value="{{$value.Id}}" >
+               <label for="{{$key}}" >{{$value.Codigo}}</label>
+           </div>
+      {{end}}
+        </div>
+
+	<div class="fwrapper fcols2">
+           <div class="fbox">
+              <input type="hidden" name="token" value="{{.token}}">
+          </div>
+          <div class="fbox">
+            <span> 
+               <input type="submit" name="action" formenctype="multipart/form-data" value="Enviar" />
+              <input type="submit" name="action" value="Cancelar" />
+           </span> 
+          </div>
+        </div>
+       </form>
+	
+
+	{{template "footer" .}}
+  </div>
+
+{{end}}
+

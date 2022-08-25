@@ -1,0 +1,45 @@
+{{define "title"}}Listar Aptos{{end}}
+{{define "head"}}  {{end}}
+{{define "foot"}}{{end}}
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+	  <div class="lwrapper fcols3">
+             <div class="box"> Codigo      </div>
+             <div class="box"> Descripcion	   </div>
+             {{ if or ( eq $.Level 3)  ( eq $.Level 4)}}
+                <div class="box">   
+                  <a class="btn btn-warning" href ="#">  Ed </a> 
+                </div>
+             {{end}} 
+             {{ if eq $.Level 5}}
+                <div class="box">   
+                   <span>
+                     <a class="btn btn-warning" href ="#">  Ed </a> 
+                     <a class="btn btn-danger" href ="#">  Del </a> 
+                   </span>
+                </div>
+             {{end}} 
+          </div>
+      {{  range  .LisApt}}
+          <div class="lwrapper fcols3">
+           <div class="box"> {{ .Codigo }} </div>
+           <div class="box"> {{ .Descripcion }} </div>
+           {{ if or ( eq $.Level 3)  ( eq $.Level 4)}}
+              <div class="box">
+                <a class="btn btn-warning" href="/apto/update/{{.Id}}" > Ed </a>
+              </div>
+           {{end}} 
+           {{ if eq $.Level 5}}
+              <div class="box">
+                <span>
+                    <a class="btn btn-warning" href="/apto/update/{{.Id}}" > Ed </a>
+                    <a class="btn btn-danger" href="/apto/delete/{{.Id}}" > Del </a>
+                </span>
+              </div>
+           {{end}} 
+          </div>
+      {{end}}
+{{end}}
+

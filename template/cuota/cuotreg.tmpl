@@ -1,0 +1,90 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}<h5 class="mcenter">Cuota</h5>{{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>  
+       <form method="post" action="{{.Action}}"  >
+   	<div class="fwrapper fcols42">
+           <div class="fbox">
+               <label for="period" >Periodo</label>
+           </div>
+
+           <div class="fbox">
+             <input type="text" id="period" name="period" size="10" value="{{.Cuot.Period | DATEFORMAT}}" readonly/>
+           </div>
+           <div class="fbox">
+               <label for="apt" >Apto</label>
+           </div>
+           <div class="fbox">
+               <select name="aptId"> 
+                  {{range $key, $value := .LisApt}}
+                    <option value="{{ $value.Id }}">{{ $value.Codigo }}</option>
+                  {{end}}
+               </select>
+           </div>
+        </div>
+
+   	<div class="fwrapper fcols42">
+           <div class="fbox">
+               <label for="tip" >Tipo</label>
+           </div>
+           <div class="fbox">
+               <select name="tipId"> 
+                  {{range $key, $value := .LisTip}}
+                    <option value="{{ $value.Id }}">{{ $value.Descripcion }}</option>
+                  {{end}}
+               </select>
+           </div>
+           <div class="fbox">
+               <label for="fecha" >Fecha</label>
+           </div>
+           <div class="fbox">
+               <input type="date" id="fecha" name="fecha" size="10" />
+           </div>
+        </div>
+
+   	<div class="fwrapper fcols42">
+           <div class="fbox">
+               <label for="amount" >Pagado</label>
+           </div>
+            <div class="fbox">
+                <input type="text" id="amount" name="amount" size="12" maxlength="16" placeholder="Amount" />
+           </div>
+           <div class="fbox">
+             <span>
+		<input type="hidden" name="periodId" value="{{.Cuot.PeriodId}}">
+		<input type="hidden" name="token" value="{{.token}}">
+             </span>
+           </div>
+           <div class="fbox">
+             <span>
+		<input type="submit" name="action"  value="Seguir" />
+		<input type="submit" name="action"  value="Cancelar" />
+             </span>
+           </div>
+        </div>
+
+       </form>
+
+         <div class="lwrapper fcols5">
+           <div class="fbox">Periodo </div>
+           <div class="fbox">Apto </div>
+           <div class="fbox">Tipo </div>
+           <div class="fbox">Fecha </div>
+           <div class="fbox">Pagado </div>
+         </div>
+ {{  range .LisCuots}}
+         <div class="lwrapper fcols5">
+           <div class="box"> {{ .Period | DATEFORMAT }} </div>
+           <div class="box"> {{ .Apto }} </div>
+           <div class="box"> {{ .Tipo }} </div>
+           <div class="box"> {{ .Fecha  | DATEFORMAT }} </div>
+           <div class="box"> {{ .Amount | FORMAT64 }} </div>
+         </div>
+   {{end}} 
+
+
+  </div>
+{{end}}

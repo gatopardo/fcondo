@@ -1,0 +1,59 @@
+{{define "title"}}Estado Apto{{end}}
+{{define "head"}}  {{end}}
+{{define "foot"}}{{end}}
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+
+     <form method="post" action="/report/rptlisapto" >
+   	<div class="fwrapper fcols4c">
+           <div class="fbox">
+               <label for="periodf" >Per Final</label>
+           </div>
+           <div class="fbox">
+               <select name="idf"> 
+                  {{range $key, $value := .LisPeriods}}
+                        <option value="{{ $value.Id }}" >{{ $value.Inicio | DATEFORMAT }}</option>
+                  {{end}}
+               </select>
+           </div>
+
+           <div class="fbox">
+               <label for="period" >Per Inicial</label>
+           </div>
+           <div class="fbox">
+               <select name="idi"> 
+                  {{range $key, $value := .LisPeriods}}
+                        <option value="{{ $value.Id }}" >{{ $value.Inicio | DATEFORMAT }}</option>
+                  {{end}}
+               </select>
+           </div>
+        </div>
+
+   	<div class="fwrapper fcols4c">
+        {{range  $key,$value := .LisApts}}
+           <div class="fbox">
+               <input type="checkbox" id="{{$key}}" name="{{$key}}" value="{{$value.Id}}" >
+               <label for="{{$key}}" >{{$value.Codigo}}</label>
+           </div>
+      {{end}}
+        </div>
+
+
+   	<div class="fwrapper fcols2a">
+           <div class="fbox">
+		<input type="hidden" name="token" value="{{.token}}">
+           </div>
+           <div class="fbox">
+                 <span>
+		<input type="submit" name="action"  value="Seguir" />
+		<input type="submit" name="action"  value="Cancelar" />
+                 </span>
+           </div>
+        </div>
+       </form>
+
+      {{template "footer" .}}
+{{end}}
+

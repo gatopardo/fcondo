@@ -1,0 +1,35 @@
+{{define "title"}}Estado Condominio{{end}}
+{{define "head"}}  {{end}}
+{{define "foot"}}{{end}}
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+
+     <form method="post" action="/report/rptcondo" >
+   	<div class="fwrapper fcols4">
+           <div class="fbox">
+               <label for="period" >Periodo</label>
+           </div>
+           <div class="fbox">
+               <select name="id"> 
+                  {{range $key, $value := .LisPeriods}}
+                        <option value="{{ $value.Id }}" >{{ $value.Inicio | DATEFORMAT }}</option>
+                  {{end}}
+               </select>
+           </div>
+           <div class="fbox">
+                 <span>
+		<input type="submit" name="action"  value="Seguir" />
+		<input type="submit" name="action"  value="Cancelar" />
+                 </span>
+           </div>
+           <div class="fbox">
+		<input type="hidden" name="token" value="{{.token}}">
+           </div>
+        </div>
+       </form>
+
+      {{template "footer" .}}
+{{end}}
+

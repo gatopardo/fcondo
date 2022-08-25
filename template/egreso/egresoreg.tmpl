@@ -1,0 +1,89 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}<h5 class="mcenter">Egresos</h5>{{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>  
+
+       <form method="post" action="{{.Action}}">
+
+   	<div class="fwrapper fcols42">
+           <div class="fbox">
+               <label for="period" >Periodo</label>
+           </div>
+           <div class="fbox">
+             <input type="text" id="period" name="period" size="10" value="{{.Egreso.Period | DATEFORMAT}}" readonly/>
+           </div>
+           <div class="fbox">
+               <label for="tipo" >Tipo</label>
+           </div>
+           <div class="fbox">
+               <select name="tipId"> 
+                  {{range $key, $value := .LisTip}}
+                    <option value="{{ $value.Id }}">{{ .Descripcion }}</option>
+                  {{end}}
+               </select>
+           </div>
+        </div>
+
+   	<div class="fwrapper fcols42">
+           <div class="fbox">
+               <label for="fecha" >Fecha</label>
+           </div>
+           <div class="fbox">
+               <input type="date" id="fecha" name="fecha" size="10" />
+           </div>
+           <div class="fbox">
+               <label for="amount" >Amount</label>
+           </div>
+            <div class="fbox">
+                <input type="text" id="amount" name="amount" size="12" maxlength="16" placeholder="Amount" />
+           </div>
+        </div>
+
+   	<div class="fwrapper fcols42">
+           <div class="fbox">
+               <label for="descripcion" >Descripcion</label>
+           </div>
+            <div class="fbox">
+                <input type="text" id="descripcion" name="descripcion" size="20" maxlength="48" placeholder="Descripcion" />
+           </div>
+           <div class="fbox">
+             <span>
+		<input type="hidden" name="periodId" value="{{.Egreso.PeriodId}}">
+		<input type="hidden" name="token" value="{{.token}}">
+            </span>
+           </div>
+           <div class="fbox">
+             <span>
+		<input type="submit" name="action"  value="Seguir" />
+		<input type="submit" name="action"  value="Cancelar" />
+            </span>
+           </div>
+        </div>
+
+       </form>
+
+         <div class="lwrapper fcols6">
+           <div class="fbox">Periodo </div>
+           <div class="fbox">Tipo </div>
+           <div class="fbox">Fecha </div>
+           <div class="fbox">Monto </div>
+           <div class="fbox">Descripcion </div>
+         </div>
+
+ {{  range .LisEgres}}
+         <div class="lwrapper fcols6">
+           <div class="box"> {{ .Period | DATEFORMAT }} </div>
+           <div class="box"> {{ .Tipo }} </div>
+           <div class="box"> {{ .Fecha  | DATEFORMAT }} </div>
+           <div class="box"> {{ .Amount | FORMAT64 }} </div>
+           <div class="box"> {{ .Descripcion }} </div>
+         </div>
+   {{end}} 
+
+
+  </div>
+
+{{end}}

@@ -1,0 +1,67 @@
+{{define "title"}}Listar Periodos{{end}}
+{{define "head"}}  
+ 
+{{end}}
+
+
+{{define "pagi"}}
+     <div class="cwrapper">
+        {{ range $index, $btn := .slice }}
+            {{if eq $btn $.current}}
+               <div class="button color2">
+                  <a class="label" href="/period/list/{{$btn}}"> << {{$btn}} >></a>
+            {{else}}
+               <div class="button color1">
+                  <a class="label" href="/period/list/{{$btn}}"> {{$btn}}</a>
+            {{end}}
+               </div>
+         {{end}}
+     </div>
+   {{end}}
+
+
+ {{define "content"}}
+      {{template "pagi"    .  }}
+      {{$NLev := .Level}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+	  <div class="lwrapper fcols3">
+             <div class="box"> Inicio      </div>
+             <div class="box"> Final	   </div>
+             {{ if or ( eq $.Level 3)  ( eq $.Level 4)}}
+                <div class="box">   
+                  <a class="btn btn-warning" href ="#">  Ed </a> 
+                </div>
+             {{end}} 
+             {{ if eq $NLev 5}}
+                <div class="box">   
+                <span>
+                  <a class="btn btn-warning" href ="#">  Ed </a> 
+                  <a class="btn btn-danger" href ="#">  Del </a> 
+                </span>
+                </div>
+             {{end}} 
+      </div>
+      {{  range  .LisPeriod}}
+         <div class="lwrapper fcols3">
+           <div class="box"> {{ .Inicio | DATEFORMAT }} </div>
+           <div class="box"> {{ .Final  | DATEFORMAT }} </div>
+           {{ if or ( eq $NLev 3)  ( eq $NLev 4)}}
+              <div class="box">
+                <a class="btn btn-warning" href="/period/update/{{.Id}}/{{$.current}}" > Ed </a>
+              </div>
+           {{end}} 
+           {{ if eq $NLev 5}}
+              <div class="box">
+                <span>
+                    <a class="btn btn-warning" href="/period/update/{{.Id}}/{{$.current}}" > Ed </a>
+                   <a class="btn btn-danger" href="/period/delete/{{.Id}}/{{$.current}}" > Del </a>
+                </span>
+              </div>
+           {{end}} 
+         </div>
+      {{end}}
+      {{template "footer" .}}
+{{end}}
+
+{{define "foot"}}{{end}}

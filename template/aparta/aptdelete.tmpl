@@ -1,0 +1,42 @@
+{{define "title"}}{{.Title}}{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}} {{end}}
+
+{{define "content"}}
+  <div class="fcontent">
+       <h3 class="mcenter">{{template "title" .}}</h3>
+       <form method="post" action="{{.Action}}/{{Apto.Id}}" >
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="codigo">Codigo</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="codigo" name="codigo" size="2"  value="{{.Apto.Codigo}}" readonly />
+              </div>
+           </div>
+		
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+                 <label for="descrip">Descripcion</label>
+              </div>
+              <div class="fbox">
+                 <input type="text" id="descrip" name="descrip" size="32" maxlength="48"  value="{{.Apto.Descripcion}}"  readonly/>
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox">
+		 <input type="hidden" name="token" value="{{.token}}">
+              </div>
+              <div class="fbox">
+                 <input type="submit" name="action" value="Actualizar" />
+                 <input type="submit" name="action" value="Cancelar" />
+              </div>
+           </div>
+		
+	</form>
+	
+	{{template "footer" .}}
+  </div>
+
+{{end}}

@@ -1,0 +1,90 @@
+{{define "title"}}Eliminar Cuenta{{end}}
+{{define "head"}} {{end}}
+{{define "foot"}}{{end}}
+
+{{define "content"}}
+
+<div class="fcontent">
+     <h3 class="mcenter">{{template "title" .}}</h3>
+
+     <form method="post" action="/user/delete/{{.Person.Id}}" >
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="cuenta">Cuenta </label> </div>
+              <div class="fbox">
+                <input type="text" id="cuenta" name="cuenta" size="16" maxlength="32" value="{{.User.Cuenta}}"  readonly />
+              </div>
+           </div>
+
+	<div class="fwrapper fcols2">
+           <div class="fbox"> <label for="aptCodigo" >Apto</label> </div>
+           <div class="fbox">
+               <input type="text" name="aptCodigo" id="aptCodigo"  value="{{.aptCodigo}}" readonly>
+           </div>
+	</div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox"> <label for="name">Nombre </label> </div>
+              <div class="fbox">
+                <input type="text" id="fname" name="fname" size="48" maxlength="64" value="{{.Person.Fname}}"   readonly />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2">
+              <div class="fbox"> <label for="lname">Apellido </label> </div>
+              <div class="fbox">
+                <input type="text" id="lname" name="lname" size="48" maxlength="64" value="{{.Person.Lname}}"   readonly />
+              </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="address">Direccion </label> </div>
+              <div class="fbox">
+                <input type="text" id="address" name="address" size="48" value="{{.Person.Address}}"  />
+              </div>
+           </div>
+
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="email" >Email </label> </div>
+              <div class="fbox">
+                <input type="email" id="email" name="email" size="32" maxlength="48" value="{{.User.Email}}" readonly />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="tele1" >Tele1 </label> </div>
+              <div class="fbox">
+                <input type="tel" id="tele1" name="tele1" size="12" maxlength="24" value="{{.User.Tele1}}" readonly  />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="tele2" >Tele2 </label> </div>
+              <div class="fbox">
+                <input type="tel" id="tele2" name="tele2" size="12" maxlength="24" value="{{.User.Tele2}}" readonly />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox"> <label for="level" >Nivel </label> </div>
+              <div class="fbox">
+                <input type="range" id="level" name="level" size="2" maxlength="2"  value="{{.User.Level}}" min="0" max="5" readonly />
+             </div>
+           </div>
+
+	   <div class="fwrapper fcols2 ">
+              <div class="fbox">
+		<input type="hidden" name="token" value="{{.token}}">
+             </div>
+              <div class="fbox">
+                 <span> 
+                     <input type="submit" name="action" value="Eliminar" />
+                     <input type="submit" name="action" value="Cancelar" />
+                 </span> 
+             </div>
+           </div>
+	</form>
+	
+</div>
+
+{{end}}

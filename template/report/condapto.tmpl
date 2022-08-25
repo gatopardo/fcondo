@@ -1,0 +1,40 @@
+{{define "title"}}Estado Condominio{{end}}
+{{define "head"}}  {{end}}
+{{define "foot"}}{{end}}
+
+ {{define "content"}}
+      <div class="lwidth">
+          <h3 class="center"> {{template "title" . }} </h3>
+	  <div class="lwrapper fcols4b">
+               <div class="box"> Reporte    </div>
+               <div class="box"> Condominio     </div>
+               <div class="box">  Del {{.Per.Inicio | PRETTYTIME }} </div>
+               <div class="box"> Al {{.Per.Final  | PRETTYTIME  }}</div>
+          </div>
+
+	  <div class="lwrapper fcols4b">
+             <div class="box"> Apto       </div>
+             <div class="box"> Monto Pagado      </div>
+             <div class="box"> Atraso       </div>
+             <div class="box"> Con Mora        </div>
+          </div>
+
+     {{ range  .LisAmt}}
+         <div class="lwrapper fcols4b">
+            <div class="box"> {{ .Codigo  }}   </div>
+            <div class="box"> {{ .Amount    | FORMAT64 }} </div>
+            {{ if eq .Atraso 0 }}
+               <div class="box">  </div>
+            {{ else}}
+               <div class="box"> {{ .Atraso  | FORMAT64 }} </div>
+            {{ end }}
+            {{ if eq .Mora 0 }}
+               <div class="box">  </div>
+            {{ else}}
+            <div class="box"> {{ .Mora     | FORMAT64 }} </div>
+            {{ end }}
+         </div>
+     {{end}}
+      {{template "footer" .}}
+{{end}}
+
